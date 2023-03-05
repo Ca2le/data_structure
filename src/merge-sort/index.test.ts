@@ -1,7 +1,10 @@
-import { CompareFn, mergeSort } from 'fake-imports'
+// import { CompareFn, mergeSort } from 'fake-imports'
+import { mergeSort } from 'merge-sort'
+import { Compare_Fn_Type } from './types/merge_sort_types' 
 
-const compareNumbers: CompareFn<number> = (a, b) => (a < b ? -1 : a === b ? 0 : 1)
-const compareStrings: CompareFn<string> = (a, b) => a.localeCompare(b) as -1 | 0 | 1
+
+const compareNumbers: Compare_Fn_Type<number> = (a, b) => (a < b ? -1 : a === b ? 0 : 1)
+const compareStrings: Compare_Fn_Type<string> = (a, b) => a.localeCompare(b) as -1 | 0 | 1
 
 describe('mergeSort', () => {
   it('sort numbers correctly', () => {

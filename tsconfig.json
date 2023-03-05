@@ -9,6 +9,8 @@
     "forceConsistentCasingInFileNames": true,
     "noFallthroughCasesInSwitch": true,
     "downlevelIteration": true,
-    "baseUrl": "src"
-  }
+    "baseUrl": "src",
+    "jsx": "react"
+  },
+  "include": ["src/**/*"]
 }

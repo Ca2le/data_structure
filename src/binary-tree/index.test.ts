@@ -1,4 +1,6 @@
-import { BinaryTree, Traverse } from 'fake-imports'
+import { BinaryTree, Traverse } from "binary-tree"
+
+// import { BinaryTree, Traverse } from 'fake-imports'
 
 const stubTreeRoot = {
   value: 10,
