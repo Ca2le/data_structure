@@ -1,18 +1,54 @@
 import { BinaryTree } from "../binary-tree"
 import { TreeNode } from "../interfaces/tree_node"
-import { search } from "./binary_search"
 
 
 export class BinarySearchTree<T extends TreeNode>{
-    stubTreeRoot
-    constructor(stubTreeRoot: T) {
-        this.stubTreeRoot = stubTreeRoot
+
+    constructor(public stubTreeRoot: T) {
+
     }
+    has(input: number) {
+        const nodeStack: Array<TreeNode> = [this.stubTreeRoot]
+        const valueStack: Array<number> = []
+        let i: number = 0
+        let result = false
 
+        while (nodeStack.length > 0) {
+            let queue: number = 0
+            
+            if (nodeStack[i]) {
 
-    has<U>(data: U) {
-        const result = search(data, this.stubTreeRoot)
-      
+                if(nodeStack[i].value === input){
+                    result = true
+                    break;
+                }
+
+                if (nodeStack[i].right) {
+                    nodeStack.push(nodeStack[i].right as TreeNode)
+                    queue++
+                    if (nodeStack[i].right?.value === input) {
+                        result = true
+                        break;
+                    }
+                }
+                if (nodeStack[i].left) {
+                    nodeStack.push(nodeStack[i].left as TreeNode)
+                    queue++
+                    if (nodeStack[i].left?.value === input) {
+                        result = true
+                        break;
+                    }
+                }
+                if (nodeStack[i].value !== null) {
+                    valueStack.push(nodeStack[i].value as number);
+                    queue--
+                    nodeStack.splice(i, 1)
+                    i += queue
+                }
+
+            }
+        }
+
         return result
     }
 }

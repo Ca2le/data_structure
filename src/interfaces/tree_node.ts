@@ -1,6 +1,6 @@
 
-export interface TreeNode {
+export interface TreeNode<T> {
     value: number | null;
-    left?: TreeNode;
-    right?: TreeNode;
+    left?: TreeNode<T>;
+    right?: TreeNode<T>;
 }

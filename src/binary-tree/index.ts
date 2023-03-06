@@ -1,5 +1,12 @@
 import { TreeNode } from '../interfaces/tree_node'
 import traverse_tree from '../utilities/node_to_array'
+import { create_A_BFS_List } from './create_A_BFS_List'
+import { create_A_DFS_Inorder_List } from './create_A_DFS_Inorder_List'
+import { create_A_DFS_Postorder_List } from './create_A_DFS_Postorder_List'
+import { create_A_DFS_Preorder_List } from './create_A_DFS_Preorder_List'
+import { expect_Node } from './expect_Node'
+import { get_Value_List_From_Column } from './get_Value_List_From_Column'
+import { Expect_Node_Type } from './types/Expect_Node_Type'
 
 //     10
 //     / \
@@ -9,84 +16,6 @@ import traverse_tree from '../utilities/node_to_array'
 //          / \
 //         17  50
 
-export class BinaryTree {
-  constructor(public stubTreeRoot: TreeNode) { }
-
-  getNodeValue(value: number) {
-    console.log({ value })
-    return { value }
-  }
-
-  traverse<T>(input: string, getNodeValue: (value: any) => T) {
-
-    const traversed_tree_values = traverse_tree(this.stubTreeRoot, input)
-
-    if (traversed_tree_values) {
-      for (let i = 0; i < traversed_tree_values.length; i++) {
-        getNodeValue(traversed_tree_values[i])
-      }
-    }
-
-    //       function drinkEach(drink, drinks) {
-    //   for (let i = 0; i < drinks.length; i++) {
-    //     drink(drinks[i]);
-    //   }
-    // }
-  }
-
-  set_current_column(path_list: Array<number>){
-    const current = path_list.reduce((a, b) => a + b, 0)
-    return current
-  }
-
-  getColumn(input: number) {
-
-    const node_stack: TreeNode[] = [this.stubTreeRoot]
-    const column_list: Array<number> = []
-    const path_list: Array<number> = [0]
-    let i: number = 0
-    let current_node: TreeNode = this.stubTreeRoot
-    let current_column: number
-    const left = -1
-    const right = 1
-
-    while (node_stack.length > 0) {
-      current_node = node_stack[i]
-      current_column = this.set_current_column(path_list)
-
-      if (current_column === input && current_node.value) {
-        column_list.push(current_node.value as number)
-      }
-
-      if (!node_stack[i]?.left?.value && !node_stack[i]?.right?.value) {
-        node_stack[i].value = null
-        node_stack.pop()
-        path_list.pop()
-        i--
-
-      } else {
-
-        if (node_stack[i]?.left?.value) {
-          node_stack[i].value = null
-          node_stack.push(node_stack[i].left as TreeNode)
-          i++
-          path_list.push(left)
-          continue
-        }
-        if (node_stack[i]?.right?.value) {
-          node_stack[i].value = null
-          node_stack.push(node_stack[i].right as TreeNode)
-          i++
-          path_list.push(right)
-          continue
-
-        }
-
-
-      }
-    }
-  }
-}
 export class Traverse {
   static DFS_INORDER = 'DFS_INORDER'
   static DFS_PREORDER = 'DFS_PREORDER'
@@ -94,3 +23,56 @@ export class Traverse {
   static BFS = 'BFS'
 }
 
+
+export class BinaryTree<T> {
+  constructor(public stubTreeRoot: TreeNode<T>) {
+
+  }
+
+ 
+
+  traverse(input: string, cb: any) {
+
+    switch (input) {
+      case 'DFS_INORDER': {
+        const array = create_A_DFS_Inorder_List(this.stubTreeRoot)
+        array.map( e => {
+          cb(expect_Node(e))
+        })
+        break
+      }
+      case 'DFS_PREORDER': {
+        const array = create_A_DFS_Preorder_List(this.stubTreeRoot)
+        array.map( e => {
+          cb(expect_Node(e))
+        })
+        break
+      }
+      case 'DFS_POSTORDER': {
+        const array =  create_A_DFS_Postorder_List(this.stubTreeRoot)
+        array.map( e => {
+          cb(expect_Node(e))
+        })
+        break
+      }
+      case 'BFS': {
+        const array =  create_A_BFS_List(this.stubTreeRoot)
+        array.map( e => {
+          cb(expect_Node(e))
+        })
+        break
+      }
+      default: throw new Error(`Invalid traverse: ${input}`)
+    }
+
+  }
+
+
+  getColumn(input: number) {
+
+    const value_list = get_Value_List_From_Column(input, this.stubTreeRoot)
+
+    return value_list
+  
+  }
+}
