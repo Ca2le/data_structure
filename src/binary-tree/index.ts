@@ -28,9 +28,7 @@ export class BinaryTree<T> {
   constructor(public stubTreeRoot: TreeNode<T>) {
 
   }
-
  
-
   traverse(input: string, cb: any) {
 
     switch (input) {

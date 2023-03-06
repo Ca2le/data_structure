@@ -1,4 +1,5 @@
 import { TreeNode } from "interfaces/tree_node";
+import _ from "lodash";
 
 function set_current_column(path_list: Array<number>) {
     const current = path_list.reduce((a, b) => a + b, 0)
@@ -6,21 +7,22 @@ function set_current_column(path_list: Array<number>) {
 }
 
 export function get_Value_List_From_Column<T extends TreeNode<T>>(input: number, stubTreeRoot: T) {
-    const node_stack = [stubTreeRoot]
+    const tree_root_clone = _.cloneDeep(stubTreeRoot)
+    const node_stack = [tree_root_clone]
     const column_list: Array<number> = []
     const path_list: Array<number> = [0]
     let i: number = 0
-    let current_node = node_stack[0]
+    let current_node: T
     let current_column: number
     const left = -1
     const right = 1
-
+    console.log(node_stack)
     while (node_stack.length > 0) {
         current_node = node_stack[i]
         current_column = set_current_column(path_list)
 
         if (current_column === input && current_node.value) {
-            column_list.push(current_node.value as number)
+            column_list.push(current_node.value)
         }
 
         if (!node_stack[i]?.left?.value && !node_stack[i]?.right?.value) {
@@ -48,5 +50,6 @@ export function get_Value_List_From_Column<T extends TreeNode<T>>(input: number,
 
         }
     }
+
     return column_list
 }
