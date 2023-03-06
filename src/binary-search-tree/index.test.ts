@@ -1,4 +1,5 @@
-import { BinarySearchTree } from 'fake-imports'
+// import { BinarySearchTree } from 'fake-imports'
+import { BinarySearchTree } from './index'
 
 const stubTreeRoot = {
   value: 10,

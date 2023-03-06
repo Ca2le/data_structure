@@ -91,16 +91,6 @@ export class Traverse {
   static DFS_INORDER = 'DFS_INORDER'
   static DFS_PREORDER = 'DFS_PREORDER'
   static DFS_POSTORDER = 'DFS_POSTORDER'
-  static BFS = 'BFS_BREADTH'
+  static BFS = 'BFS'
 }
 
-[
-  { value: 3 },
-  { value: 5 },
-  { value: 7 },
-  { value: 10 },
-  { value: 15 },
-  { value: 17 },
-  { value: 20 },
-  { value: 50 },
-]

@@ -109,6 +109,8 @@ function traverse_Values<T extends TreeNode>(tree: T, traverse: string) {
     if (traversed_values) {
       return traversed_values
     }
+
   }
+  else throw new Error(`Invalid traverse type.. reseved: ${traverse}` )
 }
 export default traverse_Values
