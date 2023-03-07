@@ -1,6 +1,6 @@
 import { BinaryTree } from "../binary-tree"
 import { TreeNode } from "../interfaces/tree_node"
-import { search_For_Column } from "./search_for_column"
+import { node_Search } from "./node_search"
 
 
 export class BinarySearchTree<T extends TreeNode<T>>{
@@ -9,6 +9,6 @@ export class BinarySearchTree<T extends TreeNode<T>>{
 
     }
     has(input: number) {
-        search_For_Column(input, this.stubTreeRoot)
+       return node_Search(input, this.stubTreeRoot)
     }
 }
