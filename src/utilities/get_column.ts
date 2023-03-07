@@ -3,7 +3,6 @@ import { TreeNode } from "../interfaces/tree_node";
 const set_current_column = (path_list: Array<number>) => {
    const current = path_list.reduce( (a, b) => a + b, 0 )
    return current
-
 }
 
 function getColumnArr<T extends TreeNode<T>>(root: T, input: number) {
@@ -11,21 +10,13 @@ function getColumnArr<T extends TreeNode<T>>(root: T, input: number) {
     const column_list: Array<number> = []
     const path_list: Array<number> = [0]
     let i: number = 0
-    let current_node = root
     let current_column: number
     const left = -1
     const right = 1
-   
-    //     10
-    //     / \ 
-    //    5   15
-    //   / \   \
-    //  3   7   20
-    //          / \
-    //         17  50
+
 
     while (node_stack.length > 0) {
-        current_node = node_stack[i]
+        let current_node = node_stack[i]
         current_column = set_current_column(path_list)
 
         if (current_column === input && current_node.value) {
