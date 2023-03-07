@@ -1,6 +1,4 @@
-
-
-export function expect_Node(value: number) {
-    console.log({ value })
+export function expect_Node(value: number)  {
+   
     return { value }
 } 
