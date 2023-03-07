@@ -6,9 +6,7 @@ function sort_array<T>(
   compare_fn: Compare_Fn_Type<T>
 ): Data_Array_Type<T> {
   const data = data_array;
-
   const result = data.sort(compare_fn);
-
   return result;
 }
 
@@ -25,14 +23,8 @@ export function mergeSort<T>(
   }
 
   if (Array.isArray(data)) {
-    if (typeof data[0] === "number") {
       result = sort_array(data, compare_fn);
       return result;
-    }
-    if (typeof data[0] === "string") {
-      result = sort_array(data, compare_fn);
-      return result;
-    }
   }
 
   return []
