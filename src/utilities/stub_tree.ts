@@ -1,6 +1,6 @@
 import { TreeNode } from "../interfaces/tree_node";
 
-export const stubTreeRoot: TreeNode = {
+export const stubTreeRoot: TreeNode<any>  = {
     value: 10,
     left: {
       value: 5,

@@ -1,0 +1,72 @@
+.node-container {
+    position: absolute;
+    height: 100px;
+    width: 100px;
+}
+
+.node-outer {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: aliceblue;
+    border: 10px blue solid;
+}
+
+.node-inner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.value{
+    font-size: 24px;
+}
+
+#ID0{
+    top: 0;
+    left: 50%;
+}
+#ID1{
+    top: 20%;
+    left: 40%;
+}
+#ID2{
+    top: 20%;
+    left: 60%;
+}
+#ID3{
+    top: 40%;
+    left: 30%;
+}
+#ID4{
+    top: 40%;
+    left: 50%;
+}
+#ID5{
+    top: 40%;
+    left: 70%;
+}
+#ID6{
+    top: 60%;
+    left: 60%;
+}
+#ID7{
+    top: 60%;
+    left: 80%;
+}
+
+.left-child {
+    
+}
+.right-child {
+
+}

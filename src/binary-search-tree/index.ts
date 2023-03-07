@@ -2,13 +2,13 @@ import { BinaryTree } from "../binary-tree"
 import { TreeNode } from "../interfaces/tree_node"
 
 
-export class BinarySearchTree<T extends TreeNode>{
+export class BinarySearchTree<T extends TreeNode<T>>{
 
     constructor(public stubTreeRoot: T) {
 
     }
     has(input: number) {
-        const nodeStack: Array<TreeNode> = [this.stubTreeRoot]
+        const nodeStack = [this.stubTreeRoot]
         const valueStack: Array<number> = []
         let i: number = 0
         let result = false
@@ -24,7 +24,7 @@ export class BinarySearchTree<T extends TreeNode>{
                 }
 
                 if (nodeStack[i].right) {
-                    nodeStack.push(nodeStack[i].right as TreeNode)
+                    nodeStack.push(nodeStack[i].right as T)
                     queue++
                     if (nodeStack[i].right?.value === input) {
                         result = true
@@ -32,7 +32,7 @@ export class BinarySearchTree<T extends TreeNode>{
                     }
                 }
                 if (nodeStack[i].left) {
-                    nodeStack.push(nodeStack[i].left as TreeNode)
+                    nodeStack.push(nodeStack[i].left as T)
                     queue++
                     if (nodeStack[i].left?.value === input) {
                         result = true
