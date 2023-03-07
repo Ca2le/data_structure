@@ -1,7 +1,7 @@
 import { TreeNode } from '../interfaces/tree_node'
 import _ from 'lodash'
 
-function traverse_Values<T extends TreeNode>(tree: T, traverse: string) {
+function traverse_Values<T extends TreeNode<T>>(tree: T, traverse: string) {
   const node_tree_clone: T = _.cloneDeep(tree)
 
   const node_stack: T[] = [node_tree_clone]

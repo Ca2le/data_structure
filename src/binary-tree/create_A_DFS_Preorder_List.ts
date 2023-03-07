@@ -10,7 +10,7 @@ export function create_A_DFS_Preorder_List<T extends TreeNode<T>>(stubTreeRoot: 
     while (node_stack.length > 0) {
         let queue = 0
         let value = node_stack[i].value as number
-
+        
         if (node_stack[i]) {
             if (node_stack[i].right) {
                 node_stack.push(node_stack[i].right as T)

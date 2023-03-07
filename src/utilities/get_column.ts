@@ -12,12 +12,12 @@ const set_current_column = (path_list: Array<number>) => {
 
 }
 
-function getColumnArr<T extends TreeNode>(root: T, input: number) {
-    const node_stack: TreeNode[] = [root]
+function getColumnArr<T extends TreeNode<T>>(root: T, input: number) {
+    const node_stack = [root]
     const column_list: Array<number> = []
     const path_list: Array<number> = [0]
     let i: number = 0
-    let current_node: TreeNode = root
+    let current_node = root
     let current_column: number
     const left = -1
     const right = 1
@@ -48,14 +48,14 @@ function getColumnArr<T extends TreeNode>(root: T, input: number) {
 
             if (node_stack[i]?.left?.value) {
                 node_stack[i].value = null
-                node_stack.push(node_stack[i].left as TreeNode)
+                node_stack.push(node_stack[i].left as T)
                 i++
                 path_list.push(left)
                 continue
             }
             if (node_stack[i]?.right?.value) {
                 node_stack[i].value = null
-                node_stack.push(node_stack[i].right as TreeNode)
+                node_stack.push(node_stack[i].right as T)
                 i++
                 path_list.push(right)
                 continue
