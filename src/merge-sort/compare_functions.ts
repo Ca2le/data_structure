@@ -1,7 +1,15 @@
 import { Compare_Fn_Type } from "./types/merge_sort_types";
 
 export const CompareNumbers: Compare_Fn_Type<number> = (a, b) => {
-    return a < b ? -1 : a === b ? 0 : 1;
+    let result: number;
+    if (a < b) {
+        result = -1;
+    } else if (a === b) {
+        result = 0;
+    } else {
+        result = 1;
+    }
+    return result;
 };
 
 export const compareStrings: Compare_Fn_Type<string> = (a, b) =>{
