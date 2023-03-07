@@ -14,7 +14,6 @@ function getColumnArr<T extends TreeNode<T>>(root: T, input: number) {
     const left = -1
     const right = 1
 
-
     while (node_stack.length > 0) {
         let current_node = node_stack[i]
         current_column = set_current_column(path_list)
@@ -46,15 +45,8 @@ function getColumnArr<T extends TreeNode<T>>(root: T, input: number) {
                 continue
             }
         }
-
-
     }
-
-
-
-
 }
-
 
 export default getColumnArr
 
