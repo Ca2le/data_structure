@@ -11,7 +11,7 @@ function Node_Tree() {
     return (
         <div className='background'>
             {node_tree.map((e, i) => {
-                return <Node value={e} id={`ID${i}`} />
+                return <Node key={`IDX${i}_32`}value={e} id={`ID${i}`} />
             })}
         </div>
     )
